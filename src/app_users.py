@@ -16,8 +16,10 @@ class Users:
     logging.info("Connected to DB")
     try:
       insert_cursor = Database.database_connection.cursor()
-      insert_sql = "INSERT INTO sample_schema.users VALUES(%s)"
-      insert_cursor.execute(insert_sql, (user_data["email"], user_data["password"], user_data["username"], user_data["user_type"],))
+      insert_cursor.execute(
+        "INSERT INTO sample_schema.users (email, password, username, user_type) VALUES(%s,%s,%s,%s)",
+        (user_data["email"], user_data["password"], user_data["username"], user_data["user_type"],)
+      )
       Database.commit_db_actions()
     except Exception as e:
       Database.rollback_db_actions()
