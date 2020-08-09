@@ -1,0 +1,7 @@
+databases:
+  demo:
+    host: 'localhost'
+    port: '20040'
+    database: 'flask_db'
+    user: 'master'
+    password: 'secret'

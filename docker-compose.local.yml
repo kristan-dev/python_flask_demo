@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  webserver:
+    container_name: webserver
+    build: .
+    ports:
+        - 5001:80
+    volumes:
+        - ./src:/src
+
+  database:
+    image: postgres
+    container_name: database
+    restart: always
+    ports:
+      - 20040:5432
+    volumes:
+      - ./database:/database
+    environment:
+      POSTGRES_DB: flask_db
+      POSTGRES_USER: master
+      POSTGRES_PASSWORD: secret
